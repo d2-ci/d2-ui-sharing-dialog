@@ -12,7 +12,9 @@ var _propTypes = require('prop-types');
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _d2UiCore = require('@dhis2/d2-ui-core');
+var _Done = require('@material-ui/icons/Done');
+
+var _Done2 = _interopRequireDefault(_Done);
 
 var _MenuItem = require('@material-ui/core/MenuItem');
 
@@ -43,7 +45,7 @@ var PermissionOption = function PermissionOption(props) {
         props.isSelected && _react2.default.createElement(
             _ListItemIcon2.default,
             null,
-            _react2.default.createElement(_d2UiCore.SvgIcon, { icon: 'Done' })
+            _react2.default.createElement(_Done2.default, null)
         ),
         _react2.default.createElement(_ListItemText2.default, { inset: true, primary: props.primaryText })
     );

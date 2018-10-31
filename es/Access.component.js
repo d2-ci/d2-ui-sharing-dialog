@@ -6,10 +6,32 @@ import mapProps from 'recompose/mapProps';
 import getContext from 'recompose/getContext';
 import withProps from 'recompose/withProps';
 import IconButton from '@material-ui/core/IconButton';
-import { SvgIcon } from '@dhis2/d2-ui-core';
 import ClearIcon from '@material-ui/icons/Clear';
+import PersonIcon from '@material-ui/icons/Person';
+import GroupIcon from '@material-ui/icons/Group';
+import PublicIcon from '@material-ui/icons/Public';
+import BusinessIcon from '@material-ui/icons/Business';
 import PermissionPicker from './PermissionPicker.component';
 import { accessStringToObject, accessObjectToString } from './utils';
+
+var icons = {
+    user: PersonIcon,
+    userGroup: GroupIcon,
+    external: PublicIcon,
+    public: BusinessIcon
+};
+
+var SvgIcon = function SvgIcon(_ref) {
+    var userType = _ref.userType;
+
+    var Icon = icons[userType] || PersonIcon;
+
+    return React.createElement(Icon, { color: 'action' });
+};
+
+SvgIcon.propTypes = {
+    userType: PropTypes.string.isRequired
+};
 
 var styles = {
     accessView: {
@@ -32,21 +54,6 @@ var d2Context = {
     d2: PropTypes.object.isRequired
 };
 
-var getAccessIcon = function getAccessIcon(userType) {
-    switch (userType) {
-        case 'user':
-            return 'Person';
-        case 'userGroup':
-            return 'Group';
-        case 'external':
-            return 'Public';
-        case 'public':
-            return 'Business';
-        default:
-            return 'Person';
-    }
-};
-
 var useAccessObjectFormat = function useAccessObjectFormat(props) {
     return _extends({}, props, {
         access: accessStringToObject(props.access),
@@ -56,19 +63,19 @@ var useAccessObjectFormat = function useAccessObjectFormat(props) {
     });
 };
 
-export var Access = function Access(_ref) {
-    var access = _ref.access,
-        accessType = _ref.accessType,
-        accessOptions = _ref.accessOptions,
-        primaryText = _ref.primaryText,
-        secondaryText = _ref.secondaryText,
-        onChange = _ref.onChange,
-        onRemove = _ref.onRemove,
-        disabled = _ref.disabled;
+export var Access = function Access(_ref2) {
+    var access = _ref2.access,
+        accessType = _ref2.accessType,
+        accessOptions = _ref2.accessOptions,
+        primaryText = _ref2.primaryText,
+        secondaryText = _ref2.secondaryText,
+        onChange = _ref2.onChange,
+        onRemove = _ref2.onRemove,
+        disabled = _ref2.disabled;
     return React.createElement(
         'div',
         { style: styles.accessView },
-        React.createElement(SvgIcon, { icon: getAccessIcon(accessType) }),
+        React.createElement(SvgIcon, { userType: accessType }),
         React.createElement(
             'div',
             { style: styles.accessDescription },
@@ -154,9 +161,9 @@ export var ExternalAccess = compose(getContext(d2Context), withProps(function (p
     };
 }))(Access);
 
-var constructSecondaryText = function constructSecondaryText(_ref2) {
-    var canView = _ref2.canView,
-        canEdit = _ref2.canEdit;
+var constructSecondaryText = function constructSecondaryText(_ref3) {
+    var canView = _ref3.canView,
+        canEdit = _ref3.canEdit;
 
     if (canEdit) {
         return 'anyone_can_find_view_and_edit';
