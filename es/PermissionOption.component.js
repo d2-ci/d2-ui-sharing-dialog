@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { SvgIcon } from '@dhis2/d2-ui-core';
+import DoneIcon from '@material-ui/icons/Done';
 import MenuItem from '@material-ui/core/MenuItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -20,7 +20,7 @@ var PermissionOption = function PermissionOption(props) {
         props.isSelected && React.createElement(
             ListItemIcon,
             null,
-            React.createElement(SvgIcon, { icon: 'Done' })
+            React.createElement(DoneIcon, null)
         ),
         React.createElement(ListItemText, { inset: true, primary: props.primaryText })
     );

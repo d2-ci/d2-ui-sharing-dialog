@@ -37,11 +37,25 @@ var _IconButton = require('@material-ui/core/IconButton');
 
 var _IconButton2 = _interopRequireDefault(_IconButton);
 
-var _d2UiCore = require('@dhis2/d2-ui-core');
-
 var _Clear = require('@material-ui/icons/Clear');
 
 var _Clear2 = _interopRequireDefault(_Clear);
+
+var _Person = require('@material-ui/icons/Person');
+
+var _Person2 = _interopRequireDefault(_Person);
+
+var _Group = require('@material-ui/icons/Group');
+
+var _Group2 = _interopRequireDefault(_Group);
+
+var _Public = require('@material-ui/icons/Public');
+
+var _Public2 = _interopRequireDefault(_Public);
+
+var _Business = require('@material-ui/icons/Business');
+
+var _Business2 = _interopRequireDefault(_Business);
 
 var _PermissionPicker = require('./PermissionPicker.component');
 
@@ -50,6 +64,25 @@ var _PermissionPicker2 = _interopRequireDefault(_PermissionPicker);
 var _utils = require('./utils');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var icons = {
+    user: _Person2.default,
+    userGroup: _Group2.default,
+    external: _Public2.default,
+    public: _Business2.default
+};
+
+var SvgIcon = function SvgIcon(_ref) {
+    var userType = _ref.userType;
+
+    var Icon = icons[userType] || _Person2.default;
+
+    return _react2.default.createElement(Icon, { color: 'action' });
+};
+
+SvgIcon.propTypes = {
+    userType: _propTypes2.default.string.isRequired
+};
 
 var styles = {
     accessView: {
@@ -72,21 +105,6 @@ var d2Context = {
     d2: _propTypes2.default.object.isRequired
 };
 
-var getAccessIcon = function getAccessIcon(userType) {
-    switch (userType) {
-        case 'user':
-            return 'Person';
-        case 'userGroup':
-            return 'Group';
-        case 'external':
-            return 'Public';
-        case 'public':
-            return 'Business';
-        default:
-            return 'Person';
-    }
-};
-
 var useAccessObjectFormat = function useAccessObjectFormat(props) {
     return (0, _extends3.default)({}, props, {
         access: (0, _utils.accessStringToObject)(props.access),
@@ -96,19 +114,19 @@ var useAccessObjectFormat = function useAccessObjectFormat(props) {
     });
 };
 
-var Access = exports.Access = function Access(_ref) {
-    var access = _ref.access,
-        accessType = _ref.accessType,
-        accessOptions = _ref.accessOptions,
-        primaryText = _ref.primaryText,
-        secondaryText = _ref.secondaryText,
-        onChange = _ref.onChange,
-        onRemove = _ref.onRemove,
-        disabled = _ref.disabled;
+var Access = exports.Access = function Access(_ref2) {
+    var access = _ref2.access,
+        accessType = _ref2.accessType,
+        accessOptions = _ref2.accessOptions,
+        primaryText = _ref2.primaryText,
+        secondaryText = _ref2.secondaryText,
+        onChange = _ref2.onChange,
+        onRemove = _ref2.onRemove,
+        disabled = _ref2.disabled;
     return _react2.default.createElement(
         'div',
         { style: styles.accessView },
-        _react2.default.createElement(_d2UiCore.SvgIcon, { icon: getAccessIcon(accessType) }),
+        _react2.default.createElement(SvgIcon, { userType: accessType }),
         _react2.default.createElement(
             'div',
             { style: styles.accessDescription },
@@ -194,9 +212,9 @@ var ExternalAccess = exports.ExternalAccess = (0, _compose2.default)((0, _getCon
     };
 }))(Access);
 
-var constructSecondaryText = function constructSecondaryText(_ref2) {
-    var canView = _ref2.canView,
-        canEdit = _ref2.canEdit;
+var constructSecondaryText = function constructSecondaryText(_ref3) {
+    var canView = _ref3.canView,
+        canEdit = _ref3.canEdit;
 
     if (canEdit) {
         return 'anyone_can_find_view_and_edit';
