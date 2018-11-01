@@ -20,7 +20,7 @@ var defaultState = {
     errorMessage: ''
 };
 
-var loadingStatusMask = {
+var loadingMaskStyle = {
     position: 'relative',
     left: '45%',
     top: '45%'
@@ -29,7 +29,7 @@ var loadingStatusMask = {
 var LoadingMask = function LoadingMask() {
     return React.createElement(
         'div',
-        { style: loadingStatusMask },
+        { style: loadingMaskStyle },
         React.createElement(CircularProgress, null)
     );
 };
