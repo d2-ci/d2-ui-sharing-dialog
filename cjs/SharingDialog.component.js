@@ -56,6 +56,10 @@ var _Snackbar = require('@material-ui/core/Snackbar');
 
 var _Snackbar2 = _interopRequireDefault(_Snackbar);
 
+var _CircularProgress = require('@material-ui/core/CircularProgress');
+
+var _CircularProgress2 = _interopRequireDefault(_CircularProgress);
+
 var _propTypes = require('prop-types');
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
@@ -64,19 +68,25 @@ var _Sharing = require('./Sharing.component');
 
 var _Sharing2 = _interopRequireDefault(_Sharing);
 
-var _d2UiCore = require('@dhis2/d2-ui-core');
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var styles = {
-    loadingMask: {
-        position: 'relative'
-    }
-};
 
 var defaultState = {
     sharedObject: null,
     errorMessage: ''
+};
+
+var loadingMaskStyle = {
+    position: 'relative',
+    left: '45%',
+    top: '45%'
+};
+
+var LoadingMask = function LoadingMask() {
+    return _react2.default.createElement(
+        'div',
+        { style: loadingMaskStyle },
+        _react2.default.createElement(_CircularProgress2.default, null)
+    );
 };
 
 /**
@@ -185,7 +195,7 @@ var SharingDialog = function (_React$Component) {
                     _react2.default.createElement(
                         _DialogContent2.default,
                         null,
-                        isLoading && _react2.default.createElement(_d2UiCore.LoadingMask, { style: styles.loadingMask, size: 1 }),
+                        isLoading && _react2.default.createElement(LoadingMask, null),
                         this.state.sharedObject && _react2.default.createElement(_Sharing2.default, {
                             sharedObject: this.state.sharedObject,
                             dataShareable: dataShareable,

@@ -11,19 +11,27 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogActions from '@material-ui/core/DialogActions';
 import Button from '@material-ui/core/Button';
 import Snackbar from '@material-ui/core/Snackbar';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import PropTypes from 'prop-types';
 import Sharing from './Sharing.component';
-import { LoadingMask } from '@dhis2/d2-ui-core';
-
-var styles = {
-    loadingMask: {
-        position: 'relative'
-    }
-};
 
 var defaultState = {
     sharedObject: null,
     errorMessage: ''
+};
+
+var loadingMaskStyle = {
+    position: 'relative',
+    left: '45%',
+    top: '45%'
+};
+
+var LoadingMask = function LoadingMask() {
+    return React.createElement(
+        'div',
+        { style: loadingMaskStyle },
+        React.createElement(CircularProgress, null)
+    );
 };
 
 /**
@@ -132,7 +140,7 @@ var SharingDialog = function (_React$Component) {
                     React.createElement(
                         DialogContent,
                         null,
-                        isLoading && React.createElement(LoadingMask, { style: styles.loadingMask, size: 1 }),
+                        isLoading && React.createElement(LoadingMask, null),
                         this.state.sharedObject && React.createElement(Sharing, {
                             sharedObject: this.state.sharedObject,
                             dataShareable: dataShareable,

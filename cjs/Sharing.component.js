@@ -48,7 +48,9 @@ var _Typography = require('@material-ui/core/Typography');
 
 var _Typography2 = _interopRequireDefault(_Typography);
 
-var _d2UiCore = require('@dhis2/d2-ui-core');
+var _Heading = require('@dhis2/d2-ui-core/build/es/headings/Heading.component');
+
+var _Heading2 = _interopRequireDefault(_Heading);
 
 var _UserSearch = require('./UserSearch.component');
 
@@ -184,7 +186,7 @@ var Sharing = function (_React$Component) {
             return _react2.default.createElement(
                 'div',
                 null,
-                _react2.default.createElement(_d2UiCore.Heading, { text: displayName, level: 2 }),
+                _react2.default.createElement(_Heading2.default, { text: displayName, level: 2 }),
                 _react2.default.createElement(_CreatedBy2.default, { author: user }),
                 _react2.default.createElement('div', { style: styles.titleBodySpace }),
                 _react2.default.createElement(
