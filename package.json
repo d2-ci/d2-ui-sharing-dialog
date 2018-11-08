@@ -1,6 +1,5 @@
 {
   "name": "@dhis2/d2-ui-sharing-dialog",
-  "version": "5.0.1",
   "description": "DHIS2 component for sharing dialog",
   "main": "./index.js",
   "module": "./index.js",
@@ -40,5 +39,6 @@
   },
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "version": "5.0.1"
 }
