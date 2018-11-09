@@ -100,7 +100,7 @@ var SharingDialog = function (_React$Component) {
             var isLoading = !this.state.sharedObject && this.props.open && !errorOccurred;
             var sharingDialogActions = [React.createElement(
                 Button,
-                { key: 'closeonly', variant: 'contained', onClick: this.closeDialog },
+                { key: 'closeonly', color: 'primary', onClick: this.closeDialog },
                 this.translate('close')
             )];
 
