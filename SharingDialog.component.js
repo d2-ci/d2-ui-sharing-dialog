@@ -129,7 +129,7 @@ var SharingDialog = function (_React$Component) {
                 React.createElement(
                     Dialog,
                     _extends({
-                        PaperProps: { style: { width: '75%', maxWidth: '768px' } },
+                        maxWidth: 'lg',
                         onClose: this.closeDialog
                     }, this.muiDialogProps()),
                     React.createElement(
