@@ -1,29 +1,76 @@
-import _Object$getPrototypeOf from 'babel-runtime/core-js/object/get-prototype-of';
-import _classCallCheck from 'babel-runtime/helpers/classCallCheck';
-import _createClass from 'babel-runtime/helpers/createClass';
-import _possibleConstructorReturn from 'babel-runtime/helpers/possibleConstructorReturn';
-import _inherits from 'babel-runtime/helpers/inherits';
-import _extends from 'babel-runtime/helpers/extends';
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import Downshift from 'downshift';
-import { withStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
-import Paper from '@material-ui/core/Paper';
-import MenuItem from '@material-ui/core/MenuItem';
-import Popper from '@material-ui/core/Popper';
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _getPrototypeOf = require('babel-runtime/core-js/object/get-prototype-of');
+
+var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+
+var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+
+var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+var _createClass2 = require('babel-runtime/helpers/createClass');
+
+var _createClass3 = _interopRequireDefault(_createClass2);
+
+var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+
+var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+var _inherits2 = require('babel-runtime/helpers/inherits');
+
+var _inherits3 = _interopRequireDefault(_inherits2);
+
+var _extends2 = require('babel-runtime/helpers/extends');
+
+var _extends3 = _interopRequireDefault(_extends2);
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _downshift = require('downshift');
+
+var _downshift2 = _interopRequireDefault(_downshift);
+
+var _styles = require('@material-ui/core/styles');
+
+var _TextField = require('@material-ui/core/TextField');
+
+var _TextField2 = _interopRequireDefault(_TextField);
+
+var _Paper = require('@material-ui/core/Paper');
+
+var _Paper2 = _interopRequireDefault(_Paper);
+
+var _MenuItem = require('@material-ui/core/MenuItem');
+
+var _MenuItem2 = _interopRequireDefault(_MenuItem);
+
+var _Popper = require('@material-ui/core/Popper');
+
+var _Popper2 = _interopRequireDefault(_Popper);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Input = function Input(_ref) {
     var InputProps = _ref.InputProps;
 
-    return React.createElement(TextField, {
+    return _react2.default.createElement(_TextField2.default, {
         id: 'user-search-input',
         fullWidth: true,
-        InputProps: _extends({}, InputProps)
+        InputProps: (0, _extends3.default)({}, InputProps)
     });
 };
 Input.propTypes = {
-    InputProps: PropTypes.object.isRequired
+    InputProps: _propTypes2.default.object.isRequired
 };
 
 var Suggestion = function Suggestion(_ref2) {
@@ -34,9 +81,9 @@ var Suggestion = function Suggestion(_ref2) {
 
     var isSelected = selectedItem && selectedItem.id === suggestion.id;
 
-    return React.createElement(
-        MenuItem,
-        _extends({}, itemProps, {
+    return _react2.default.createElement(
+        _MenuItem2.default,
+        (0, _extends3.default)({}, itemProps, {
             key: suggestion.label,
             selected: isHighlighted,
             component: 'div',
@@ -49,10 +96,10 @@ var Suggestion = function Suggestion(_ref2) {
 };
 
 Suggestion.propTypes = {
-    isHighlighted: PropTypes.bool.isRequired,
-    itemProps: PropTypes.object,
-    selectedItem: PropTypes.object,
-    suggestion: PropTypes.shape({ displayName: PropTypes.string }).isRequired
+    isHighlighted: _propTypes2.default.bool.isRequired,
+    itemProps: _propTypes2.default.object,
+    selectedItem: _propTypes2.default.object,
+    suggestion: _propTypes2.default.shape({ displayName: _propTypes2.default.string }).isRequired
 };
 
 var styles = function styles(theme) {
@@ -80,15 +127,14 @@ var styles = function styles(theme) {
 var popperNode = void 0;
 
 var AutoComplete = function (_Component) {
-    _inherits(AutoComplete, _Component);
+    (0, _inherits3.default)(AutoComplete, _Component);
 
     function AutoComplete() {
-        _classCallCheck(this, AutoComplete);
-
-        return _possibleConstructorReturn(this, (AutoComplete.__proto__ || _Object$getPrototypeOf(AutoComplete)).apply(this, arguments));
+        (0, _classCallCheck3.default)(this, AutoComplete);
+        return (0, _possibleConstructorReturn3.default)(this, (AutoComplete.__proto__ || (0, _getPrototypeOf2.default)(AutoComplete)).apply(this, arguments));
     }
 
-    _createClass(AutoComplete, [{
+    (0, _createClass3.default)(AutoComplete, [{
         key: 'render',
         value: function render() {
             var _props = this.props,
@@ -98,11 +144,11 @@ var AutoComplete = function (_Component) {
                 searchText = _props.searchText;
 
 
-            return React.createElement(
+            return _react2.default.createElement(
                 'div',
                 { className: classes.root },
-                React.createElement(
-                    Downshift,
+                _react2.default.createElement(
+                    _downshift2.default,
                     {
                         id: 'user-autocomplete',
                         onInputValueChange: this.props.onInputChanged,
@@ -120,10 +166,10 @@ var AutoComplete = function (_Component) {
                             isOpen = _ref3.isOpen,
                             selectedItem = _ref3.selectedItem;
 
-                        return React.createElement(
+                        return _react2.default.createElement(
                             'div',
                             { className: classes.container },
-                            React.createElement(Input, {
+                            _react2.default.createElement(Input, {
                                 fullWidth: true,
                                 classes: classes,
                                 InputProps: getInputProps({
@@ -133,17 +179,17 @@ var AutoComplete = function (_Component) {
                                     }
                                 })
                             }),
-                            React.createElement(
+                            _react2.default.createElement(
                                 'div',
                                 getMenuProps(),
-                                isOpen && React.createElement(
-                                    Popper,
+                                isOpen && _react2.default.createElement(
+                                    _Popper2.default,
                                     { className: classes.popper, open: true, anchorEl: popperNode },
-                                    React.createElement(
-                                        Paper,
+                                    _react2.default.createElement(
+                                        _Paper2.default,
                                         { square: true, style: { width: popperNode ? popperNode.clientWidth : null } },
                                         suggestions.map(function (suggestion, index) {
-                                            return React.createElement(Suggestion, {
+                                            return _react2.default.createElement(Suggestion, {
                                                 key: suggestion.id,
                                                 suggestion: suggestion,
                                                 itemProps: getItemProps({
@@ -165,20 +211,19 @@ var AutoComplete = function (_Component) {
             );
         }
     }]);
-
     return AutoComplete;
-}(Component);
+}(_react.Component);
 
 AutoComplete.propTypes = {
-    classes: PropTypes.object.isRequired,
-    placeholderText: PropTypes.string,
-    onInputChanged: PropTypes.func.isRequired,
-    onItemSelected: PropTypes.func.isRequired,
-    suggestions: PropTypes.array.isRequired
+    classes: _propTypes2.default.object.isRequired,
+    placeholderText: _propTypes2.default.string,
+    onInputChanged: _propTypes2.default.func.isRequired,
+    onItemSelected: _propTypes2.default.func.isRequired,
+    suggestions: _propTypes2.default.array.isRequired
 };
 
 AutoComplete.defaultProps = {
     placeholderText: ''
 };
 
-export default withStyles(styles)(AutoComplete);
+exports.default = (0, _styles.withStyles)(styles)(AutoComplete);

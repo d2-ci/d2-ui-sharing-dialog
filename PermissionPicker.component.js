@@ -1,18 +1,66 @@
-import _extends from 'babel-runtime/helpers/extends';
-import _Object$getPrototypeOf from 'babel-runtime/core-js/object/get-prototype-of';
-import _classCallCheck from 'babel-runtime/helpers/classCallCheck';
-import _possibleConstructorReturn from 'babel-runtime/helpers/possibleConstructorReturn';
-import _inherits from 'babel-runtime/helpers/inherits';
-import PropTypes from 'prop-types';
-import React, { Component, Fragment } from 'react';
-import IconButton from '@material-ui/core/IconButton';
-import Divider from '@material-ui/core/Divider';
-import Popover from '@material-ui/core/Popover';
-import NotInterestedIcon from '@material-ui/icons/NotInterested';
-import CreateIcon from '@material-ui/icons/Create';
-import VisibilityIcon from '@material-ui/icons/Visibility';
+'use strict';
 
-import PermissionOption from './PermissionOption.component';
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _extends2 = require('babel-runtime/helpers/extends');
+
+var _extends3 = _interopRequireDefault(_extends2);
+
+var _getPrototypeOf = require('babel-runtime/core-js/object/get-prototype-of');
+
+var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+
+var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+
+var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+
+var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+var _inherits2 = require('babel-runtime/helpers/inherits');
+
+var _inherits3 = _interopRequireDefault(_inherits2);
+
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _IconButton = require('@material-ui/core/IconButton');
+
+var _IconButton2 = _interopRequireDefault(_IconButton);
+
+var _Divider = require('@material-ui/core/Divider');
+
+var _Divider2 = _interopRequireDefault(_Divider);
+
+var _Popover = require('@material-ui/core/Popover');
+
+var _Popover2 = _interopRequireDefault(_Popover);
+
+var _NotInterested = require('@material-ui/icons/NotInterested');
+
+var _NotInterested2 = _interopRequireDefault(_NotInterested);
+
+var _Create = require('@material-ui/icons/Create');
+
+var _Create2 = _interopRequireDefault(_Create);
+
+var _Visibility = require('@material-ui/icons/Visibility');
+
+var _Visibility2 = _interopRequireDefault(_Visibility);
+
+var _PermissionOption = require('./PermissionOption.component');
+
+var _PermissionOption2 = _interopRequireDefault(_PermissionOption);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var styles = {
     optionHeader: {
@@ -31,19 +79,19 @@ var AccessIcon = function AccessIcon(_ref) {
         color: disabled ? "disabled" : "action"
     };
     if (metaAccess.canEdit) {
-        return React.createElement(CreateIcon, iconProps);
+        return _react2.default.createElement(_Create2.default, iconProps);
     }
 
-    return metaAccess.canView ? React.createElement(VisibilityIcon, iconProps) : React.createElement(NotInterestedIcon, iconProps);
+    return metaAccess.canView ? _react2.default.createElement(_Visibility2.default, iconProps) : _react2.default.createElement(_NotInterested2.default, iconProps);
 };
 
 var PermissionPicker = function (_Component) {
-    _inherits(PermissionPicker, _Component);
+    (0, _inherits3.default)(PermissionPicker, _Component);
 
     function PermissionPicker(props, context) {
-        _classCallCheck(this, PermissionPicker);
+        (0, _classCallCheck3.default)(this, PermissionPicker);
 
-        var _this = _possibleConstructorReturn(this, (PermissionPicker.__proto__ || _Object$getPrototypeOf(PermissionPicker)).call(this, props));
+        var _this = (0, _possibleConstructorReturn3.default)(this, (PermissionPicker.__proto__ || (0, _getPrototypeOf2.default)(PermissionPicker)).call(this, props));
 
         _this.state = {
             open: false
@@ -51,7 +99,7 @@ var PermissionPicker = function (_Component) {
 
         _this.onOptionClick = function (access) {
             return function () {
-                var newAccess = _extends({}, _this.props.access, access);
+                var newAccess = (0, _extends3.default)({}, _this.props.access, access);
 
                 _this.props.onChange(newAccess);
             };
@@ -84,49 +132,49 @@ var PermissionPicker = function (_Component) {
                 metaOptions = _this$props$accessOpt.meta;
 
 
-            return React.createElement(
-                Fragment,
+            return _react2.default.createElement(
+                _react.Fragment,
                 null,
-                React.createElement(
-                    IconButton,
+                _react2.default.createElement(
+                    _IconButton2.default,
                     {
                         onClick: _this.openMenu,
                         disabled: _this.props.disabled
                     },
-                    React.createElement(AccessIcon, { metaAccess: meta, disabled: _this.props.disabled })
+                    _react2.default.createElement(AccessIcon, { metaAccess: meta, disabled: _this.props.disabled })
                 ),
-                React.createElement(
-                    Popover,
+                _react2.default.createElement(
+                    _Popover2.default,
                     {
                         open: _this.state.open,
                         anchorEl: _this.state.anchor,
                         onClose: _this.closeMenu
                     },
-                    React.createElement(OptionHeader, { text: _this.translate('metadata') }),
-                    React.createElement(PermissionOption, {
+                    _react2.default.createElement(OptionHeader, { text: _this.translate('metadata') }),
+                    _react2.default.createElement(_PermissionOption2.default, {
                         disabled: !metaOptions.canEdit,
                         primaryText: _this.translate('can_edit_and_view'),
                         isSelected: meta.canEdit,
                         onClick: _this.onOptionClick({ meta: { canView: true, canEdit: true } })
                     }),
-                    React.createElement(PermissionOption, {
+                    _react2.default.createElement(_PermissionOption2.default, {
                         disabled: !metaOptions.canView,
                         primaryText: _this.translate('can_view_only'),
                         isSelected: !meta.canEdit && meta.canView,
                         onClick: _this.onOptionClick({ meta: { canView: true, canEdit: false } })
                     }),
-                    React.createElement(PermissionOption, {
+                    _react2.default.createElement(_PermissionOption2.default, {
                         disabled: !metaOptions.noAccess,
                         primaryText: _this.translate('no_access'),
                         isSelected: !meta.canEdit && !meta.canView,
                         onClick: _this.onOptionClick({ meta: { canView: false, canEdit: false } })
                     }),
-                    React.createElement(Divider, null),
-                    dataOptions && React.createElement(
-                        Fragment,
+                    _react2.default.createElement(_Divider2.default, null),
+                    dataOptions && _react2.default.createElement(
+                        _react.Fragment,
                         null,
-                        React.createElement(OptionHeader, { text: _this.translate('data') }),
-                        React.createElement(PermissionOption, {
+                        _react2.default.createElement(OptionHeader, { text: _this.translate('data') }),
+                        _react2.default.createElement(_PermissionOption2.default, {
                             disabled: !dataOptions.canEdit,
                             primaryText: _this.translate('can_capture_and_view'),
                             isSelected: data.canEdit,
@@ -134,7 +182,7 @@ var PermissionPicker = function (_Component) {
                                 data: { canView: true, canEdit: true }
                             })
                         }),
-                        React.createElement(PermissionOption, {
+                        _react2.default.createElement(_PermissionOption2.default, {
                             disabled: !dataOptions.canView,
                             primaryText: _this.translate('can_view_only'),
                             isSelected: !data.canEdit && data.canView,
@@ -142,7 +190,7 @@ var PermissionPicker = function (_Component) {
                                 data: { canView: true, canEdit: false }
                             })
                         }),
-                        React.createElement(PermissionOption, {
+                        _react2.default.createElement(_PermissionOption2.default, {
                             disabled: !dataOptions.noAccess,
                             primaryText: _this.translate('no_access'),
                             isSelected: !data.canEdit && !data.canView,
@@ -163,13 +211,13 @@ var PermissionPicker = function (_Component) {
     }
 
     return PermissionPicker;
-}(Component);
+}(_react.Component);
 
 PermissionPicker.propTypes = {
-    access: PropTypes.object.isRequired,
-    accessOptions: PropTypes.object.isRequired,
-    onChange: PropTypes.func.isRequired,
-    disabled: PropTypes.bool
+    access: _propTypes2.default.object.isRequired,
+    accessOptions: _propTypes2.default.object.isRequired,
+    onChange: _propTypes2.default.func.isRequired,
+    disabled: _propTypes2.default.bool
 };
 
 PermissionPicker.defaultProps = {
@@ -177,12 +225,12 @@ PermissionPicker.defaultProps = {
 };
 
 PermissionPicker.contextTypes = {
-    d2: PropTypes.object.isRequired
+    d2: _propTypes2.default.object.isRequired
 };
 
 var OptionHeader = function OptionHeader(_ref2) {
     var text = _ref2.text;
-    return React.createElement(
+    return _react2.default.createElement(
         'div',
         { style: styles.optionHeader },
         text.toUpperCase()
@@ -190,7 +238,7 @@ var OptionHeader = function OptionHeader(_ref2) {
 };
 
 OptionHeader.propTypes = {
-    text: PropTypes.string.isRequired
+    text: _propTypes2.default.string.isRequired
 };
 
-export default PermissionPicker;
+exports.default = PermissionPicker;

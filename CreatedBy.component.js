@@ -1,5 +1,18 @@
-import PropTypes from 'prop-types';
-import React from 'react';
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var CreatedBy = function CreatedBy(_ref, context) {
     var author = _ref.author;
@@ -8,7 +21,7 @@ var CreatedBy = function CreatedBy(_ref, context) {
 
     var createdByText = author ? context.d2.i18n.getTranslation('created_by') + ': ' + author.name : context.d2.i18n.getTranslation('no_author');
 
-    return React.createElement(
+    return _react2.default.createElement(
         'div',
         null,
         createdByText
@@ -16,11 +29,11 @@ var CreatedBy = function CreatedBy(_ref, context) {
 };
 
 CreatedBy.propTypes = {
-    author: PropTypes.object.isRequired
+    author: _propTypes2.default.object.isRequired
 };
 
 CreatedBy.contextTypes = {
-    d2: PropTypes.object.isRequired
+    d2: _propTypes2.default.object.isRequired
 };
 
-export default CreatedBy;
+exports.default = CreatedBy;

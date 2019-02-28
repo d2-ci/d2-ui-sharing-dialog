@@ -1,18 +1,68 @@
-import _toConsumableArray from 'babel-runtime/helpers/toConsumableArray';
-import _extends from 'babel-runtime/helpers/extends';
-import _Object$getPrototypeOf from 'babel-runtime/core-js/object/get-prototype-of';
-import _classCallCheck from 'babel-runtime/helpers/classCallCheck';
-import _createClass from 'babel-runtime/helpers/createClass';
-import _possibleConstructorReturn from 'babel-runtime/helpers/possibleConstructorReturn';
-import _inherits from 'babel-runtime/helpers/inherits';
-import PropTypes from 'prop-types';
-import React from 'react';
-import Divider from '@material-ui/core/Divider';
-import Typography from '@material-ui/core/Typography';
-import Heading from '@dhis2/d2-ui-core/headings/Heading.component';
-import UserSearch from './UserSearch.component';
-import CreatedBy from './CreatedBy.component';
-import { PublicAccess, ExternalAccess, GroupAccess } from './Access.component';
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _toConsumableArray2 = require('babel-runtime/helpers/toConsumableArray');
+
+var _toConsumableArray3 = _interopRequireDefault(_toConsumableArray2);
+
+var _extends2 = require('babel-runtime/helpers/extends');
+
+var _extends3 = _interopRequireDefault(_extends2);
+
+var _getPrototypeOf = require('babel-runtime/core-js/object/get-prototype-of');
+
+var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+
+var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+
+var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+var _createClass2 = require('babel-runtime/helpers/createClass');
+
+var _createClass3 = _interopRequireDefault(_createClass2);
+
+var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+
+var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+var _inherits2 = require('babel-runtime/helpers/inherits');
+
+var _inherits3 = _interopRequireDefault(_inherits2);
+
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _Divider = require('@material-ui/core/Divider');
+
+var _Divider2 = _interopRequireDefault(_Divider);
+
+var _Typography = require('@material-ui/core/Typography');
+
+var _Typography2 = _interopRequireDefault(_Typography);
+
+var _Heading = require('@dhis2/d2-ui-core/headings/Heading.component');
+
+var _Heading2 = _interopRequireDefault(_Heading);
+
+var _UserSearch = require('./UserSearch.component');
+
+var _UserSearch2 = _interopRequireDefault(_UserSearch);
+
+var _CreatedBy = require('./CreatedBy.component');
+
+var _CreatedBy2 = _interopRequireDefault(_CreatedBy);
+
+var _Access = require('./Access.component');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var styles = {
     createdBy: {
@@ -33,17 +83,17 @@ var styles = {
  */
 
 var Sharing = function (_React$Component) {
-    _inherits(Sharing, _React$Component);
+    (0, _inherits3.default)(Sharing, _React$Component);
 
     function Sharing(props, context) {
-        _classCallCheck(this, Sharing);
+        (0, _classCallCheck3.default)(this, Sharing);
 
-        var _this = _possibleConstructorReturn(this, (Sharing.__proto__ || _Object$getPrototypeOf(Sharing)).call(this, props));
+        var _this = (0, _possibleConstructorReturn3.default)(this, (Sharing.__proto__ || (0, _getPrototypeOf2.default)(Sharing)).call(this, props));
 
         _this.onAccessRuleChange = function (id) {
             return function (accessRule) {
                 var changeWithId = function changeWithId(rule) {
-                    return rule.id === id ? _extends({}, rule, { access: accessRule }) : rule;
+                    return rule.id === id ? (0, _extends3.default)({}, rule, { access: accessRule }) : rule;
                 };
                 var userAccesses = (_this.props.sharedObject.object.userAccesses || []).map(changeWithId);
                 var userGroupAccesses = (_this.props.sharedObject.object.userGroupAccesses || []).map(changeWithId);
@@ -91,14 +141,14 @@ var Sharing = function (_React$Component) {
         _this.addUserAccess = function (userAccess) {
             var currentAccesses = _this.props.sharedObject.object.userAccesses || [];
             _this.props.onChange({
-                userAccesses: [].concat(_toConsumableArray(currentAccesses), [userAccess])
+                userAccesses: [].concat((0, _toConsumableArray3.default)(currentAccesses), [userAccess])
             }, _this.scrollAccessListToBottom());
         };
 
         _this.addUserGroupAccess = function (userGroupAccess) {
             var currentAccesses = _this.props.sharedObject.object.userGroupAccesses || [];
             _this.props.onChange({
-                userGroupAccesses: [].concat(_toConsumableArray(currentAccesses), [userGroupAccess])
+                userGroupAccesses: [].concat((0, _toConsumableArray3.default)(currentAccesses), [userGroupAccess])
             }, _this.scrollAccessListToBottom());
         };
 
@@ -110,7 +160,7 @@ var Sharing = function (_React$Component) {
         return _this;
     }
 
-    _createClass(Sharing, [{
+    (0, _createClass3.default)(Sharing, [{
         key: 'render',
         value: function render() {
             var _this2 = this;
@@ -133,39 +183,39 @@ var Sharing = function (_React$Component) {
                 return access.id;
             }));
 
-            return React.createElement(
+            return _react2.default.createElement(
                 'div',
                 null,
-                React.createElement(Heading, { text: displayName, level: 2 }),
-                React.createElement(CreatedBy, { author: user }),
-                React.createElement('div', { style: styles.titleBodySpace }),
-                React.createElement(
-                    Typography,
+                _react2.default.createElement(_Heading2.default, { text: displayName, level: 2 }),
+                _react2.default.createElement(_CreatedBy2.default, { author: user }),
+                _react2.default.createElement('div', { style: styles.titleBodySpace }),
+                _react2.default.createElement(
+                    _Typography2.default,
                     { variant: 'subheading' },
                     this.context.d2.i18n.getTranslation('who_has_access')
                 ),
-                React.createElement(Divider, null),
-                React.createElement(
+                _react2.default.createElement(_Divider2.default, null),
+                _react2.default.createElement(
                     'div',
                     { style: styles.rules, ref: this.setAccessListRef },
-                    React.createElement(PublicAccess, {
+                    _react2.default.createElement(_Access.PublicAccess, {
                         access: publicAccess,
                         disabled: !allowPublicAccess,
                         dataShareable: this.props.dataShareable,
                         onChange: this.onPublicAccessChange
                     }),
-                    React.createElement(Divider, null),
-                    React.createElement(ExternalAccess, {
+                    _react2.default.createElement(_Divider2.default, null),
+                    _react2.default.createElement(_Access.ExternalAccess, {
                         access: externalAccess,
                         disabled: !allowExternalAccess,
                         onChange: this.onExternalAccessChange
                     }),
-                    React.createElement(Divider, null),
+                    _react2.default.createElement(_Divider2.default, null),
                     userAccesses && userAccesses.map(function (access) {
-                        return React.createElement(
+                        return _react2.default.createElement(
                             'div',
                             { key: access.id },
-                            React.createElement(GroupAccess, {
+                            _react2.default.createElement(_Access.GroupAccess, {
                                 groupName: access.displayName,
                                 groupType: 'user',
                                 access: access.access,
@@ -173,14 +223,14 @@ var Sharing = function (_React$Component) {
                                 onRemove: _this2.onAccessRemove(access.id),
                                 onChange: _this2.onAccessRuleChange(access.id)
                             }),
-                            React.createElement(Divider, null)
+                            _react2.default.createElement(_Divider2.default, null)
                         );
                     }),
                     userGroupAccesses && userGroupAccesses.map(function (access) {
-                        return React.createElement(
+                        return _react2.default.createElement(
                             'div',
                             { key: access.id },
-                            React.createElement(GroupAccess, {
+                            _react2.default.createElement(_Access.GroupAccess, {
                                 access: access.access,
                                 groupName: access.displayName,
                                 groupType: 'userGroup',
@@ -188,11 +238,11 @@ var Sharing = function (_React$Component) {
                                 onRemove: _this2.onAccessRemove(access.id),
                                 onChange: _this2.onAccessRuleChange(access.id)
                             }),
-                            React.createElement(Divider, null)
+                            _react2.default.createElement(_Divider2.default, null)
                         );
                     })
                 ),
-                React.createElement(UserSearch, {
+                _react2.default.createElement(_UserSearch2.default, {
                     onSearch: this.props.onSearch,
                     addUserAccess: this.addUserAccess,
                     addUserGroupAccess: this.addUserGroupAccess,
@@ -202,35 +252,34 @@ var Sharing = function (_React$Component) {
             );
         }
     }]);
-
     return Sharing;
-}(React.Component);
+}(_react2.default.Component);
 
 Sharing.propTypes = {
     /**
      * The object to share
      */
-    sharedObject: PropTypes.object.isRequired,
+    sharedObject: _propTypes2.default.object.isRequired,
 
     /*
      * If true, the object's data should have their own settings.
      */
-    dataShareable: PropTypes.bool.isRequired,
+    dataShareable: _propTypes2.default.bool.isRequired,
 
     /**
      * Function that takes an object containing updated sharing preferences and
      * an optional callback fired when the change was successfully posted.
      */
-    onChange: PropTypes.func.isRequired,
+    onChange: _propTypes2.default.func.isRequired,
 
     /**
      * Takes a string and a callback, and returns matching users and userGroups.
      */
-    onSearch: PropTypes.func.isRequired
+    onSearch: _propTypes2.default.func.isRequired
 };
 
 Sharing.contextTypes = {
-    d2: PropTypes.object.isRequired
+    d2: _propTypes2.default.object.isRequired
 };
 
-export default Sharing;
+exports.default = Sharing;
