@@ -40,6 +40,10 @@ var _Divider = require('@material-ui/core/Divider');
 
 var _Divider2 = _interopRequireDefault(_Divider);
 
+var _MenuList = require('@material-ui/core/MenuList');
+
+var _MenuList2 = _interopRequireDefault(_MenuList);
+
 var _Popover = require('@material-ui/core/Popover');
 
 var _Popover2 = _interopRequireDefault(_Popover);
@@ -151,56 +155,64 @@ var PermissionPicker = function (_Component) {
                         onClose: _this.closeMenu
                     },
                     _react2.default.createElement(OptionHeader, { text: _this.translate('metadata') }),
-                    _react2.default.createElement(_PermissionOption2.default, {
-                        disabled: !metaOptions.canEdit,
-                        primaryText: _this.translate('can_edit_and_view'),
-                        isSelected: meta.canEdit,
-                        onClick: _this.onOptionClick({ meta: { canView: true, canEdit: true } })
-                    }),
-                    _react2.default.createElement(_PermissionOption2.default, {
-                        disabled: !metaOptions.canView,
-                        primaryText: _this.translate('can_view_only'),
-                        isSelected: !meta.canEdit && meta.canView,
-                        onClick: _this.onOptionClick({ meta: { canView: true, canEdit: false } })
-                    }),
-                    _react2.default.createElement(_PermissionOption2.default, {
-                        disabled: !metaOptions.noAccess,
-                        primaryText: _this.translate('no_access'),
-                        isSelected: !meta.canEdit && !meta.canView,
-                        onClick: _this.onOptionClick({ meta: { canView: false, canEdit: false } })
-                    }),
+                    _react2.default.createElement(
+                        _MenuList2.default,
+                        null,
+                        _react2.default.createElement(_PermissionOption2.default, {
+                            disabled: !metaOptions.canEdit,
+                            primaryText: _this.translate('can_edit_and_view'),
+                            isSelected: meta.canEdit,
+                            onClick: _this.onOptionClick({ meta: { canView: true, canEdit: true } })
+                        }),
+                        _react2.default.createElement(_PermissionOption2.default, {
+                            disabled: !metaOptions.canView,
+                            primaryText: _this.translate('can_view_only'),
+                            isSelected: !meta.canEdit && meta.canView,
+                            onClick: _this.onOptionClick({ meta: { canView: true, canEdit: false } })
+                        }),
+                        _react2.default.createElement(_PermissionOption2.default, {
+                            disabled: !metaOptions.noAccess,
+                            primaryText: _this.translate('no_access'),
+                            isSelected: !meta.canEdit && !meta.canView,
+                            onClick: _this.onOptionClick({ meta: { canView: false, canEdit: false } })
+                        })
+                    ),
                     _react2.default.createElement(_Divider2.default, null),
                     dataOptions && _react2.default.createElement(
                         _react.Fragment,
                         null,
                         _react2.default.createElement(OptionHeader, { text: _this.translate('data') }),
-                        _react2.default.createElement(_PermissionOption2.default, {
-                            disabled: !dataOptions.canEdit,
-                            primaryText: _this.translate('can_capture_and_view'),
-                            isSelected: data.canEdit,
-                            onClick: _this.onOptionClick({
-                                data: { canView: true, canEdit: true }
+                        _react2.default.createElement(
+                            _MenuList2.default,
+                            null,
+                            _react2.default.createElement(_PermissionOption2.default, {
+                                disabled: !dataOptions.canEdit,
+                                primaryText: _this.translate('can_capture_and_view'),
+                                isSelected: data.canEdit,
+                                onClick: _this.onOptionClick({
+                                    data: { canView: true, canEdit: true }
+                                })
+                            }),
+                            _react2.default.createElement(_PermissionOption2.default, {
+                                disabled: !dataOptions.canView,
+                                primaryText: _this.translate('can_view_only'),
+                                isSelected: !data.canEdit && data.canView,
+                                onClick: _this.onOptionClick({
+                                    data: { canView: true, canEdit: false }
+                                })
+                            }),
+                            _react2.default.createElement(_PermissionOption2.default, {
+                                disabled: !dataOptions.noAccess,
+                                primaryText: _this.translate('no_access'),
+                                isSelected: !data.canEdit && !data.canView,
+                                onClick: _this.onOptionClick({
+                                    data: {
+                                        canView: false,
+                                        canEdit: false
+                                    }
+                                })
                             })
-                        }),
-                        _react2.default.createElement(_PermissionOption2.default, {
-                            disabled: !dataOptions.canView,
-                            primaryText: _this.translate('can_view_only'),
-                            isSelected: !data.canEdit && data.canView,
-                            onClick: _this.onOptionClick({
-                                data: { canView: true, canEdit: false }
-                            })
-                        }),
-                        _react2.default.createElement(_PermissionOption2.default, {
-                            disabled: !dataOptions.noAccess,
-                            primaryText: _this.translate('no_access'),
-                            isSelected: !data.canEdit && !data.canView,
-                            onClick: _this.onOptionClick({
-                                data: {
-                                    canView: false,
-                                    canEdit: false
-                                }
-                            })
-                        })
+                        )
                     )
                 )
             );
