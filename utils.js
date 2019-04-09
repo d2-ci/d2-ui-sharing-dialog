@@ -1,4 +1,9 @@
-export var cachedAccessTypeToString = function cachedAccessTypeToString(canView, canEdit) {
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var cachedAccessTypeToString = exports.cachedAccessTypeToString = function cachedAccessTypeToString(canView, canEdit) {
     if (canView) {
         return canEdit ? 'rw------' : 'r-------';
     }
@@ -6,7 +11,7 @@ export var cachedAccessTypeToString = function cachedAccessTypeToString(canView,
     return '--------';
 };
 
-export var transformAccessObject = function transformAccessObject(access, type) {
+var transformAccessObject = exports.transformAccessObject = function transformAccessObject(access, type) {
     return {
         id: access.id,
         name: access.name,
@@ -17,7 +22,7 @@ export var transformAccessObject = function transformAccessObject(access, type) 
     };
 };
 
-export var accessStringToObject = function accessStringToObject(access) {
+var accessStringToObject = exports.accessStringToObject = function accessStringToObject(access) {
     if (!access) {
         return {
             data: { canView: false, canEdit: false },
@@ -40,7 +45,7 @@ export var accessStringToObject = function accessStringToObject(access) {
     };
 };
 
-export var accessObjectToString = function accessObjectToString(accessObject) {
+var accessObjectToString = exports.accessObjectToString = function accessObjectToString(accessObject) {
     var convert = function convert(_ref) {
         var canEdit = _ref.canEdit,
             canView = _ref.canView;

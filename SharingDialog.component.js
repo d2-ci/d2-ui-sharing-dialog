@@ -1,19 +1,74 @@
-import _extends from 'babel-runtime/helpers/extends';
-import _Object$getPrototypeOf from 'babel-runtime/core-js/object/get-prototype-of';
-import _classCallCheck from 'babel-runtime/helpers/classCallCheck';
-import _createClass from 'babel-runtime/helpers/createClass';
-import _possibleConstructorReturn from 'babel-runtime/helpers/possibleConstructorReturn';
-import _inherits from 'babel-runtime/helpers/inherits';
-import React from 'react';
-import Dialog from '@material-ui/core/Dialog';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogActions from '@material-ui/core/DialogActions';
-import Button from '@material-ui/core/Button';
-import Snackbar from '@material-ui/core/Snackbar';
-import CircularProgress from '@material-ui/core/CircularProgress';
-import PropTypes from 'prop-types';
-import Sharing from './Sharing.component';
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _extends2 = require('babel-runtime/helpers/extends');
+
+var _extends3 = _interopRequireDefault(_extends2);
+
+var _getPrototypeOf = require('babel-runtime/core-js/object/get-prototype-of');
+
+var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+
+var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+
+var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+var _createClass2 = require('babel-runtime/helpers/createClass');
+
+var _createClass3 = _interopRequireDefault(_createClass2);
+
+var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+
+var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+var _inherits2 = require('babel-runtime/helpers/inherits');
+
+var _inherits3 = _interopRequireDefault(_inherits2);
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _Dialog = require('@material-ui/core/Dialog');
+
+var _Dialog2 = _interopRequireDefault(_Dialog);
+
+var _DialogTitle = require('@material-ui/core/DialogTitle');
+
+var _DialogTitle2 = _interopRequireDefault(_DialogTitle);
+
+var _DialogContent = require('@material-ui/core/DialogContent');
+
+var _DialogContent2 = _interopRequireDefault(_DialogContent);
+
+var _DialogActions = require('@material-ui/core/DialogActions');
+
+var _DialogActions2 = _interopRequireDefault(_DialogActions);
+
+var _Button = require('@material-ui/core/Button');
+
+var _Button2 = _interopRequireDefault(_Button);
+
+var _Snackbar = require('@material-ui/core/Snackbar');
+
+var _Snackbar2 = _interopRequireDefault(_Snackbar);
+
+var _CircularProgress = require('@material-ui/core/CircularProgress');
+
+var _CircularProgress2 = _interopRequireDefault(_CircularProgress);
+
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _Sharing = require('./Sharing.component');
+
+var _Sharing2 = _interopRequireDefault(_Sharing);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var defaultState = {
     sharedObject: null,
@@ -27,10 +82,10 @@ var loadingMaskStyle = {
 };
 
 var LoadingMask = function LoadingMask() {
-    return React.createElement(
+    return _react2.default.createElement(
         'div',
         { style: loadingMaskStyle },
-        React.createElement(CircularProgress, null)
+        _react2.default.createElement(_CircularProgress2.default, null)
     );
 };
 
@@ -39,12 +94,12 @@ var LoadingMask = function LoadingMask() {
  */
 
 var SharingDialog = function (_React$Component) {
-    _inherits(SharingDialog, _React$Component);
+    (0, _inherits3.default)(SharingDialog, _React$Component);
 
     function SharingDialog(props) {
-        _classCallCheck(this, SharingDialog);
+        (0, _classCallCheck3.default)(this, SharingDialog);
 
-        var _this = _possibleConstructorReturn(this, (SharingDialog.__proto__ || _Object$getPrototypeOf(SharingDialog)).call(this, props));
+        var _this = (0, _possibleConstructorReturn3.default)(this, (SharingDialog.__proto__ || (0, _getPrototypeOf2.default)(SharingDialog)).call(this, props));
 
         _initialiseProps.call(_this);
 
@@ -56,7 +111,7 @@ var SharingDialog = function (_React$Component) {
         return _this;
     }
 
-    _createClass(SharingDialog, [{
+    (0, _createClass3.default)(SharingDialog, [{
         key: 'getChildContext',
         value: function getChildContext() {
             return { d2: this.props.d2 };
@@ -98,15 +153,15 @@ var SharingDialog = function (_React$Component) {
             var dataShareable = this.state.dataShareableTypes.indexOf(this.props.type) !== -1;
             var errorOccurred = this.state.errorMessage !== '';
             var isLoading = !this.state.sharedObject && this.props.open && !errorOccurred;
-            var sharingDialogActions = [React.createElement(
-                Button,
+            var sharingDialogActions = [_react2.default.createElement(
+                _Button2.default,
                 { key: 'closeonly', color: 'primary', onClick: this.closeDialog },
                 this.translate('close')
             )];
 
             if (this.props.doNotPost) {
-                sharingDialogActions.push(React.createElement(
-                    Button,
+                sharingDialogActions.push(_react2.default.createElement(
+                    _Button2.default,
                     {
                         key: 'confirmandclose',
                         variant: 'contained',
@@ -118,38 +173,38 @@ var SharingDialog = function (_React$Component) {
                 ));
             }
 
-            return React.createElement(
+            return _react2.default.createElement(
                 'div',
                 null,
-                React.createElement(Snackbar, {
+                _react2.default.createElement(_Snackbar2.default, {
                     open: errorOccurred,
                     message: this.state.errorMessage,
                     autoHideDuration: 3000
                 }),
-                React.createElement(
-                    Dialog,
-                    _extends({
+                _react2.default.createElement(
+                    _Dialog2.default,
+                    (0, _extends3.default)({
                         maxWidth: 'lg',
                         onClose: this.closeDialog
                     }, this.muiDialogProps()),
-                    React.createElement(
-                        DialogTitle,
+                    _react2.default.createElement(
+                        _DialogTitle2.default,
                         null,
                         this.props.d2.i18n.getTranslation('share')
                     ),
-                    React.createElement(
-                        DialogContent,
+                    _react2.default.createElement(
+                        _DialogContent2.default,
                         null,
-                        isLoading && React.createElement(LoadingMask, null),
-                        this.state.sharedObject && React.createElement(Sharing, {
+                        isLoading && _react2.default.createElement(LoadingMask, null),
+                        this.state.sharedObject && _react2.default.createElement(_Sharing2.default, {
                             sharedObject: this.state.sharedObject,
                             dataShareable: dataShareable,
                             onChange: this.onSharingChanged,
                             onSearch: this.onSearchRequest
                         })
                     ),
-                    React.createElement(
-                        DialogActions,
+                    _react2.default.createElement(
+                        _DialogActions2.default,
                         null,
                         sharingDialogActions
                     )
@@ -157,14 +212,13 @@ var SharingDialog = function (_React$Component) {
             );
         }
     }]);
-
     return SharingDialog;
-}(React.Component);
+}(_react2.default.Component);
 
 var _initialiseProps = function _initialiseProps() {
     var _this2 = this;
 
-    this.state = _extends({}, defaultState, {
+    this.state = (0, _extends3.default)({}, defaultState, {
         dataShareableTypes: []
     });
 
@@ -177,7 +231,7 @@ var _initialiseProps = function _initialiseProps() {
     this.onSharingChanged = function (updatedAttributes, onSuccess) {
         var updatedObject = {
             meta: _this2.state.sharedObject.meta,
-            object: _extends({}, _this2.state.sharedObject.object, updatedAttributes)
+            object: (0, _extends3.default)({}, _this2.state.sharedObject.object, updatedAttributes)
         };
 
         if (_this2.props.doNotPost) {
@@ -264,7 +318,7 @@ var _initialiseProps = function _initialiseProps() {
     };
 
     this.addId = function (object) {
-        return _extends({}, object, { id: _this2.props.id });
+        return (0, _extends3.default)({}, object, { id: _this2.props.id });
     };
 
     this.closeDialog = function () {
@@ -298,49 +352,49 @@ var _initialiseProps = function _initialiseProps() {
 };
 
 SharingDialog.childContextTypes = {
-    d2: PropTypes.object
+    d2: _propTypes2.default.object
 };
 
 SharingDialog.propTypes = {
     /**
      * Decides whether the dialog should be open or closed.
      */
-    open: PropTypes.bool.isRequired,
+    open: _propTypes2.default.bool.isRequired,
 
     /**
      * Type of the sharable object. Can be supplied after initial render.
      */
-    type: PropTypes.string,
+    type: _propTypes2.default.string,
 
     /**
      * Id of the sharable object. Can be supplied after initial render.
      */
-    id: PropTypes.string,
+    id: _propTypes2.default.string,
 
     /**
      * Do not post new sharing settings. Rather, let the user save the new
      * settings returned from onRequestClose or onConfirm. Combine with
      * 'sharedObject' prop to skip all network requests.
      */
-    doNotPost: PropTypes.bool,
+    doNotPost: _propTypes2.default.bool,
 
     /**
      * Supply your own shared object. Will try to POST sharing settings
      * to the 'id' and 'type' combination. Use 'doNotPost' prop if you
      * want full control over network requests.
      */
-    sharedObject: PropTypes.shape({
-        object: PropTypes.shape({
-            user: PropTypes.shape({ name: PropTypes.string }).isRequired,
-            displayName: PropTypes.string.isRequired,
-            userAccesses: PropTypes.array.isRequired,
-            userGroupAccesses: PropTypes.array.isRequired,
-            publicAccess: PropTypes.string.isRequired,
-            externalAccess: PropTypes.bool
+    sharedObject: _propTypes2.default.shape({
+        object: _propTypes2.default.shape({
+            user: _propTypes2.default.shape({ name: _propTypes2.default.string }).isRequired,
+            displayName: _propTypes2.default.string.isRequired,
+            userAccesses: _propTypes2.default.array.isRequired,
+            userGroupAccesses: _propTypes2.default.array.isRequired,
+            publicAccess: _propTypes2.default.string.isRequired,
+            externalAccess: _propTypes2.default.bool
         }),
-        meta: PropTypes.shape({
-            allowPublicAccess: PropTypes.bool.isRequired,
-            allowExternalAccess: PropTypes.bool.isRequired
+        meta: _propTypes2.default.shape({
+            allowPublicAccess: _propTypes2.default.bool.isRequired,
+            allowExternalAccess: _propTypes2.default.bool.isRequired
         })
     }),
 
@@ -348,18 +402,18 @@ SharingDialog.propTypes = {
      * Function to be called when the dialog is closed. The function is called
      * with the updated sharing preferences as the first and only argument.
      */
-    onRequestClose: PropTypes.func.isRequired,
+    onRequestClose: _propTypes2.default.func.isRequired,
 
     /**
      * Function to be called when user applies the settings. Similar to
      * onRequestClose, but is only shown when doNotPost is true.
      */
-    onConfirm: PropTypes.func,
+    onConfirm: _propTypes2.default.func,
 
     /**
      * d2 instance to use.
      */
-    d2: PropTypes.object.isRequired
+    d2: _propTypes2.default.object.isRequired
 };
 
 SharingDialog.defaultProps = {
@@ -369,4 +423,4 @@ SharingDialog.defaultProps = {
     sharedObject: null
 };
 
-export default SharingDialog;
+exports.default = SharingDialog;
