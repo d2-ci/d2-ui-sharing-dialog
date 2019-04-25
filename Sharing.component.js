@@ -191,7 +191,7 @@ var Sharing = function (_React$Component) {
                 _react2.default.createElement('div', { style: styles.titleBodySpace }),
                 _react2.default.createElement(
                     _Typography2.default,
-                    { variant: 'subheading' },
+                    { variant: 'subtitle1' },
                     this.context.d2.i18n.getTranslation('who_has_access')
                 ),
                 _react2.default.createElement(_Divider2.default, null),

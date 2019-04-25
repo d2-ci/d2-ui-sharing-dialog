@@ -153,25 +153,6 @@ var SharingDialog = function (_React$Component) {
             var dataShareable = this.state.dataShareableTypes.indexOf(this.props.type) !== -1;
             var errorOccurred = this.state.errorMessage !== '';
             var isLoading = !this.state.sharedObject && this.props.open && !errorOccurred;
-            var sharingDialogActions = [_react2.default.createElement(
-                _Button2.default,
-                { key: 'closeonly', color: 'primary', onClick: this.closeDialog },
-                this.translate('close')
-            )];
-
-            if (this.props.doNotPost) {
-                sharingDialogActions.push(_react2.default.createElement(
-                    _Button2.default,
-                    {
-                        key: 'confirmandclose',
-                        variant: 'contained',
-                        color: 'primary',
-                        style: { marginLeft: '8px' },
-                        onClick: this.confirmAndCloseDialog
-                    },
-                    this.translate('apply')
-                ));
-            }
 
             return _react2.default.createElement(
                 'div',
@@ -206,7 +187,12 @@ var SharingDialog = function (_React$Component) {
                     _react2.default.createElement(
                         _DialogActions2.default,
                         null,
-                        sharingDialogActions
+                        _react2.default.createElement(
+                            _Button2.default,
+                            { key: 'closeonly', color: 'primary', onClick: this.closeDialog },
+                            this.translate('close')
+                        ),
+                        ','
                     )
                 )
             );
@@ -322,11 +308,7 @@ var _initialiseProps = function _initialiseProps() {
     };
 
     this.closeDialog = function () {
-        _this2.props.onRequestClose(_this2.addId(_this2.state.sharedObject.object, _this2.props.id));
-    };
-
-    this.confirmAndCloseDialog = function () {
-        _this2.props.onConfirm(_this2.addId(_this2.state.sharedObject.object, _this2.props.id));
+        _this2.props.doNotPost ? _this2.props.onConfirm(_this2.addId(_this2.state.sharedObject.object, _this2.props.id)) : _this2.props.onRequestClose(_this2.addId(_this2.state.sharedObject.object, _this2.props.id));
     };
 
     this.translate = function (s) {
